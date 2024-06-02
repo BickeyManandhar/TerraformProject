@@ -79,6 +79,69 @@ IAC DevOps Repository: https://github.com/stacksimplify/terraform-iacdevops-with
 
 Course Presentation: https://github.com/stacksimplify/terraform-on-aws-ec2/tree/main/presentation
 
+--------------------------------------------------------------------------------
+We can call the files containing terraform code as Terraform Configuration Files or Terraform Manifests
+
+--------------------------------------------------------------------------------
+HCL - HashiCorp Language
+  -Terraform
+    -Blocks
+    -Arguments
+    -Identifiers
+    -Comments
+
+#Template
+<Block_TYPE> "<BLOCK_LABEL>" "<BLCOK_LABEL>" {
+  #Block body
+  <IDENTIFIER> = <EXPRESSION> # Argument
+}
+
+#AWS Example
+resource "aws_instance" "ec2demo" {
+  //arguments
+  //argument name or identifier = argument value or expression
+  ami = "amiID"
+  instance_type = "t2.micro
+}
+
+Top Level Blocks: resource, provider
+Block Inside Block: provisioners, resource specific blocks like tags
+Comment can be done by # or // or /*comment*/
+----------------------------------------------------------------
+Arguments, Attributes and Meta-Arguments
+
+Arguments: arguments inside the resources. Example is above. There are rewuired and optional arguments. Example inside ec2 instance resource ami and instance_type are required arguments, but region is optional.
+
+Attributes: Values exposed by a particular resource.  
+This is how we expose/using them.
+templete:
+resources_type.resource_name.attribute_name
+example:
+aws_instance.ec2demo.public_ip
+
+Meta-arguments: It change a resource type's behavior, and are not resource-specific.
+Examples:
+depends_on
+count
+for_each
+provider
+lifecycle
+------------------------------------------------------------
+Terraform Top Level Blocks: Terraform languar uses a limited number of top-level block types, whcih are blocks that can appeat outside of any other block in a TF configuration file.
+
+Fundamental Blocks:
+Terraform Settings Block
+Provider Block
+Resource Block
+
+Variable Blcoks:
+Input Variables BLock
+Output Values Block
+Local Values Block
+
+Calling/Referencing Blocks:
+Data Sources Block
+Modules Block
 
 
 
